@@ -6,6 +6,7 @@ import { Icon } from "../Icon";
 import { Arrow, ServiceCard, StandardCard, CtaBand, PageHero } from "../blocks";
 import { ContactForm } from "../ContactForm";
 import type { Region } from "@/data/regions";
+import { CATEGORIES, servicesByCategory, slugify } from "@/data/services";
 
 export function RegionHome({ region }: { region: Region }) {
   const { t, L } = useI18n();
@@ -112,13 +113,6 @@ export function RegionServices({ region }: { region: Region }) {
   const { t, L } = useI18n();
   const base = `/${region.slug}`;
 
-  const intl: { key: string; icon: any }[] = [
-    { key: "soc2", icon: "clipboard" },
-    { key: "dora", icon: "chart" },
-    { key: "cra", icon: "server" },
-    { key: "pci", icon: "card" },
-  ];
-
   return (
     <>
       <PageHero
@@ -131,47 +125,43 @@ export function RegionServices({ region }: { region: Region }) {
 
       <section className="section">
         <div className="container">
-          {/* LOCAL */}
-          <div className="svc-row" data-reveal>
-            <div className="svc-row__head">
-              <span className="num">{L(region.localHeading)}</span>
-              <h3>{L(region.localHeading)}</h3>
-              <p>{L(region.localLead)}</p>
+          {/* LOCAL CATEGORY */}
+          <div style={{ marginBottom: 64 }}>
+            <div className="svc-row__head" style={{ maxWidth: 720, marginBottom: 28 }} data-reveal>
+              <span className="eyebrow"><Icon name="building" size={14} /> {L(region.localHeading)}</span>
+              <p className="lead" style={{ marginTop: 6 }}>{L(region.localLead)}</p>
             </div>
-            <div className="svc-items">
+            <div className="cards">
               {region.localServices.map((s, i) => (
-                <div className="svc-item" key={i}>
-                  <span className="ic"><Icon name={s.icon} size={20} /></span>
-                  <div><b>{L(s.title)}</b><span>{L(s.desc)}</span></div>
-                </div>
+                <Link href={`${base}/services/${slugify(s.title.en)}`} className="card" key={i} data-reveal>
+                  <div className="card__icon"><Icon name={s.icon} size={26} /></div>
+                  <h3>{L(s.title)}</h3>
+                  <p>{L(s.desc)}</p>
+                  <span className="card__link"><span>{t("pillars.link")}</span><Arrow /></span>
+                </Link>
               ))}
             </div>
           </div>
 
-          {/* INTERNATIONAL */}
-          <div className="svc-row" data-reveal>
-            <div className="svc-row__head">
-              <span className="num">{t("std.eyebrow")}</span>
-              <h3>{t("services.title")}</h3>
-              <p>{t("services.sub")}</p>
-            </div>
-            <div className="svc-items">
-              {intl.map(({ key, icon }) => (
-                <div className="svc-item" key={key}>
-                  <span className="ic"><Icon name={icon} size={20} /></span>
-                  <div><b>{t(`svc.${key}`)}</b><span>{t(`svc.${key}_d`)}</span></div>
-                </div>
-              ))}
-              <div className="svc-item">
-                <span className="ic"><Icon name="graduation" size={20} /></span>
-                <div><b>{t("pillars.c2t")}</b><span>{t("svc.tr_grc_d")}</span></div>
+          {/* GLOBAL CATALOG CATEGORIES */}
+          {CATEGORIES.map((cat) => (
+            <div key={cat.id} style={{ marginBottom: 64 }}>
+              <div className="svc-row__head" style={{ maxWidth: 720, marginBottom: 28 }} data-reveal>
+                <span className="eyebrow"><Icon name={cat.icon} size={14} /> {cat.title}</span>
+                <p className="lead" style={{ marginTop: 6 }}>{cat.blurb}</p>
               </div>
-              <div className="svc-item">
-                <span className="ic"><Icon name="clipboard" size={20} /></span>
-                <div><b>{t("pillars.c3t")}</b><span>{t("svc.ia_d")}</span></div>
+              <div className="cards">
+                {servicesByCategory(cat.id).map((s) => (
+                  <Link href={`${base}/services/${s.slug}`} className="card" key={s.slug} data-reveal>
+                    <div className="card__icon"><Icon name={s.icon} size={26} /></div>
+                    <h3>{s.title}</h3>
+                    <p>{s.tagline}</p>
+                    <span className="card__link"><span>{t("pillars.link")}</span><Arrow /></span>
+                  </Link>
+                ))}
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 

@@ -157,7 +157,7 @@ p { margin: 0; }
   opacity: 0; visibility: hidden; transform: translateY(-8px); transition: var(--t);
 }
 .has-mega.open .mega { opacity: 1; visibility: visible; transform: translateY(0); }
-.mega__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+.mega__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 26px; }
 .mega__cat { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 12.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--navy-800); padding-bottom: 12px; margin-bottom: 8px; border-bottom: 1px solid var(--line); }
 .mega__cat-ic { color: var(--accent-600); display: inline-flex; }
 .mega__list li { }

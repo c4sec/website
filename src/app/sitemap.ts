@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { REGIONS } from "@/data/regions";
-import { SERVICES } from "@/data/services";
+import { SERVICES, slugify } from "@/data/services";
 import { SITE } from "@/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -18,11 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const r of REGIONS) {
     for (const p of ["", "/services", "/contact"]) {
-      entries.push({
-        url: `${base}/${r.slug}${p}`,
-        changeFrequency: "monthly",
-        priority: 0.7,
-      });
+      entries.push({ url: `${base}/${r.slug}${p}`, changeFrequency: "monthly", priority: 0.7 });
+    }
+    const regionSlugs = [...r.localServices.map((s) => slugify(s.title.en)), ...SERVICES.map((s) => s.slug)];
+    for (const slug of regionSlugs) {
+      entries.push({ url: `${base}/${r.slug}/services/${slug}`, changeFrequency: "monthly", priority: 0.5 });
     }
   }
   return entries;

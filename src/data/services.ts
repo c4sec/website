@@ -344,6 +344,17 @@ export const SERVICES: Service[] = [
   },
 ];
 
+// Stable, locale-independent slug (used for region-local services keyed on
+// their English title).
+export function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[()/.,]/g, " ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export function getService(slug: string): Service | undefined {
   return SERVICES.find((s) => s.slug === slug);
 }

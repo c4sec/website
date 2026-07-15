@@ -4,10 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useI18n } from "./I18nProvider";
-import { Icon } from "./Icon";
+import { Icon, type IconName } from "./Icon";
 import { LOCALE_META, type Localized } from "@/i18n/config";
-import { REGION_LINKS } from "@/data/regions";
-import { CATEGORIES, servicesByCategory } from "@/data/services";
+import { REGION_LINKS, getRegion } from "@/data/regions";
+import { CATEGORIES, servicesByCategory, slugify } from "@/data/services";
 
 export function Header({
   regionSlug,
@@ -58,6 +58,21 @@ export function Header({
   const isActive = (href: string) =>
     href === "/" || href === home ? pathname === href : pathname === href || pathname.startsWith(href + "/");
 
+  // Services mega-menu columns: region-local category (if any) + global catalog.
+  type MegaCol = { title: string; icon: IconName; items: { slug: string; title: string }[] };
+  const megaRegion = regionSlug ? getRegion(regionSlug) : undefined;
+  const megaCols: MegaCol[] = [];
+  if (megaRegion) {
+    megaCols.push({
+      title: L(megaRegion.localHeading),
+      icon: "building",
+      items: megaRegion.localServices.map((s) => ({ slug: slugify(s.title.en), title: L(s.title) })),
+    });
+  }
+  CATEGORIES.forEach((c) => {
+    megaCols.push({ title: c.title, icon: c.icon, items: servicesByCategory(c.id).map((s) => ({ slug: s.slug, title: s.title })) });
+  });
+
   return (
     <header className={`header${menuOpen ? " menu-open" : ""}`}>
       <div className="container nav">
@@ -73,12 +88,12 @@ export function Header({
         <nav>
           <ul className="menu">
             {nav.map(([key, href]) => {
-              // Global "Services" becomes a mega-menu of categories + services.
-              if (key === "nav.services" && !regionSlug) {
+              // "Services" becomes a mega-menu of categories + services in every context.
+              if (key === "nav.services") {
                 return (
                   <li key={href} className={`has-mega${servicesOpen ? " open" : ""}`} ref={servicesRef}>
                     <button
-                      className={`menu__trigger${isActive("/services") ? " active" : ""}`}
+                      className={`menu__trigger${isActive(`${base}/services`) ? " active" : ""}`}
                       onClick={() => setServicesOpen((v) => !v)}
                     >
                       {t(key)}
@@ -86,16 +101,16 @@ export function Header({
                     </button>
                     <div className="mega">
                       <div className="mega__grid">
-                        {CATEGORIES.map((cat) => (
-                          <div className="mega__col" key={cat.id}>
+                        {megaCols.map((col, ci) => (
+                          <div className="mega__col" key={ci}>
                             <div className="mega__cat">
-                              <span className="mega__cat-ic"><Icon name={cat.icon} size={16} /></span>
-                              {cat.title}
+                              <span className="mega__cat-ic"><Icon name={col.icon} size={16} /></span>
+                              {col.title}
                             </div>
                             <ul className="mega__list">
-                              {servicesByCategory(cat.id).map((s) => (
+                              {col.items.map((s) => (
                                 <li key={s.slug}>
-                                  <Link href={`/services/${s.slug}`} onClick={() => { setServicesOpen(false); setMenuOpen(false); }}>
+                                  <Link href={`${base}/services/${s.slug}`} onClick={() => { setServicesOpen(false); setMenuOpen(false); }}>
                                     {s.title}
                                   </Link>
                                 </li>
@@ -104,7 +119,7 @@ export function Header({
                           </div>
                         ))}
                       </div>
-                      <Link href="/services" className="mega__all" onClick={() => { setServicesOpen(false); setMenuOpen(false); }}>
+                      <Link href={`${base}/services`} className="mega__all" onClick={() => { setServicesOpen(false); setMenuOpen(false); }}>
                         {t("services.title")} →
                       </Link>
                     </div>

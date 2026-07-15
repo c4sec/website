@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Shell } from "@/components/Shell";
-import { ServiceDetail } from "@/components/pages/ServiceDetail";
+import { ServiceView } from "@/components/pages/ServiceView";
 import { SERVICES, getService } from "@/data/services";
 import { GLOBAL_META } from "@/data/regions";
 
@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   if (!s) notFound();
   return (
     <Shell regionSlug="" regionName={GLOBAL_META.name} regionFlag={GLOBAL_META.flag} locales={GLOBAL_META.locales} defaultLocale={GLOBAL_META.defaultLocale}>
-      <ServiceDetail service={s} />
+      <ServiceView regionSlug="" slug={slug} />
     </Shell>
   );
 }
