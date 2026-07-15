@@ -6,7 +6,6 @@ import { Icon } from "../Icon";
 import { Arrow, ServiceCard, StandardCard, CtaBand } from "../blocks";
 import { FRAMEWORKS, STANDARD_KEYS } from "@/data/site";
 import { REGIONS } from "@/data/regions";
-import { SITE } from "@/data/site";
 
 export function GlobalHome() {
   const { t, L } = useI18n();
@@ -141,10 +140,6 @@ export function GlobalHome() {
             <p className="lead" style={{ marginTop: 16 }}>{t("pres.lead")}</p>
           </div>
           <div className="offices" style={{ marginTop: 40, gridTemplateColumns: "repeat(2,1fr)", display: "grid", gap: 16 }}>
-            <div className="office">
-              <span className="office__flag">🇬🇧</span>
-              <div><h4><span>{t("pres.uk_t")}</span><span className="tag">{t("pres.uk_tag")}</span></h4><p>{SITE.hqAddress}</p></div>
-            </div>
             {REGIONS.map((r) => (
               <Link href={`/${r.slug}`} className="office" key={r.slug}>
                 <span className="office__flag">{r.flag}</span>

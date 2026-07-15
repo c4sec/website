@@ -21,10 +21,6 @@ export function GlobalContact() {
             <span className="eyebrow">{t("contact.offices_eyebrow")}</span>
             <h2 className="section-title">{t("contact.offices_title")}</h2>
             <div className="contact-cards" style={{ marginTop: 28 }}>
-              <div className="contact-card">
-                <span className="cic" style={{ fontSize: 22 }}>🇬🇧</span>
-                <div><h4>{t("contact.uk_t")}</h4><p>{SITE.hqAddress}</p></div>
-              </div>
               {REGIONS.map((r) => (
                 <div className="contact-card" key={r.slug}>
                   <span className="cic" style={{ fontSize: 22 }}>{r.flag}</span>

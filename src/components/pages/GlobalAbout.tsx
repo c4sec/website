@@ -95,7 +95,7 @@ export function GlobalAbout() {
               <div className="member__photo"><span className="initials">C4</span><span className="country">🇬🇧</span></div>
               <div className="member__body"><h4>{t("pres.uk_t")}</h4><div className="role">{t("pres.uk_tag")}</div><p>{t("about.member_bio")}</p></div>
             </article>
-            {REGIONS.slice(0, 2).map((r) => (
+            {REGIONS.filter((r) => r.slug !== "uk").slice(0, 2).map((r) => (
               <article className="member" key={r.slug} data-reveal>
                 <div className="member__photo"><span className="initials">{r.slug.toUpperCase()}</span><span className="country">{r.flag}</span></div>
                 <div className="member__body"><h4>{L(r.name)}</h4><div className="role">{t("about.role_country")}</div><p>{t("about.member_bio")}</p></div>

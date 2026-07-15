@@ -28,6 +28,47 @@ export type Region = {
 };
 
 /* ------------------------------------------------------------------ */
+/*  UNITED KINGDOM                                                     */
+/* ------------------------------------------------------------------ */
+const UK: Region = {
+  code: "uk",
+  slug: "uk",
+  name: { en: "United Kingdom", tr: "Birleşik Krallık", az: "Birləşmiş Krallıq" },
+  flag: "🇬🇧",
+  city: { en: "London", tr: "Londra", az: "London" },
+  status: "live",
+  locales: ["en"],
+  defaultLocale: "en",
+  hero: {
+    badge: { en: "United Kingdom · London" },
+    title: { en: "GRC advisory, <em>for the UK's regulated economy.</em>" },
+    sub: { en: "From our London head office, C4Sec helps financial institutions, technology firms and critical-infrastructure operators meet FCA, ICO and NCSC expectations." },
+  },
+  intro: {
+    eyebrow: { en: "C4Sec United Kingdom" },
+    title: { en: "Global standards, UK regulation" },
+    lead: { en: "Our UK practice aligns international frameworks with the FCA and PRA operational-resilience rules, UK GDPR under the ICO, and NCSC guidance." },
+    body: { en: "The firm's global head office, serving regulated financial services, technology and critical national infrastructure." },
+  },
+  localHeading: { en: "UK-specific compliance" },
+  localLead: { en: "Advisory tailored to UK regulators and national cyber standards." },
+  localServices: [
+    { icon: "bank", title: { en: "FCA / PRA Operational Resilience" }, desc: { en: "Operational-resilience and important-business-services compliance for FCA and PRA regulated firms (Bank of England PS21/3)." } },
+    { icon: "lock", title: { en: "UK GDPR & DPA 2018" }, desc: { en: "Data-protection compliance under the ICO, DPIAs and outsourced Data Protection Officer services." } },
+    { icon: "shield", title: { en: "Cyber Essentials / Plus" }, desc: { en: "NCSC Cyber Essentials and Cyber Essentials Plus certification readiness and assessment." } },
+    { icon: "server", title: { en: "NCSC CAF & NIS Regulations" }, desc: { en: "Cyber Assessment Framework and NIS compliance for operators of essential and digital services." } },
+    { icon: "shield", title: { en: "ISO 27001 & Management Systems" }, desc: { en: "ISMS, ISO 22301 and ISO 20000 design, implementation and certification readiness." } },
+    { icon: "clipboard", title: { en: "SOC 2 & Assurance" }, desc: { en: "SOC 2 readiness, internal audit and supplier assurance for technology and financial firms." } },
+  ],
+  showGlobalStandards: true,
+  contact: { email: "hello@c4sec.com", phone: "+44 7464 294371", address: { en: "London, United Kingdom" } },
+  cta: {
+    title: { en: "Ready to meet UK regulatory obligations?" },
+    sub: { en: "Talk to the C4Sec UK team about FCA/PRA resilience, UK GDPR, Cyber Essentials and international standards." },
+  },
+};
+
+/* ------------------------------------------------------------------ */
 /*  TÜRKİYE                                                            */
 /* ------------------------------------------------------------------ */
 const TR: Region = {
@@ -86,7 +127,7 @@ const TR: Region = {
   ],
   showGlobalStandards: true,
   contact: {
-    email: "turkiye@c4sec.com",
+    email: "hello@c4sec.com",
     phone: "+90 212 951 0 423",
     address: { en: "Istanbul, Türkiye", tr: "İstanbul, Türkiye", az: "İstanbul, Türkiyə" },
   },
@@ -151,7 +192,7 @@ const AZ: Region = {
   ],
   showGlobalStandards: true,
   contact: {
-    email: "azerbaijan@c4sec.com",
+    email: "hello@c4sec.com",
     phone: undefined,
     address: { en: "Baku, Azerbaijan", az: "Bakı, Azərbaycan", tr: "Bakü, Azerbaycan" },
   },
@@ -195,7 +236,7 @@ const AE: Region = {
     { icon: "shield", title: { en: "ISO 27001 & SOC 2" }, desc: { en: "ISMS design, certification readiness and SOC 2 attestation support." } },
   ],
   showGlobalStandards: true,
-  contact: { email: "dubai@c4sec.com", address: { en: "Dubai, United Arab Emirates" } },
+  contact: { email: "hello@c4sec.com", address: { en: "Dubai, United Arab Emirates" } },
   cta: {
     title: { en: "Ready to meet UAE compliance obligations?" },
     sub: { en: "Talk to the C4Sec Dubai team about NESA, Central Bank, DFSA, PDPL and international standards." },
@@ -236,7 +277,7 @@ const DE: Region = {
     { icon: "shield", title: { en: "ISO 27001 & C5" }, desc: { en: "ISMS certification readiness and BSI C5 cloud-security attestation support." } },
   ],
   showGlobalStandards: true,
-  contact: { email: "germany@c4sec.com", address: { en: "Frankfurt, Germany" } },
+  contact: { email: "hello@c4sec.com", address: { en: "Frankfurt, Germany" } },
   cta: {
     title: { en: "Ready to meet German & EU compliance obligations?" },
     sub: { en: "Talk to the C4Sec Germany team about BSI, DORA, NIS2, TISAX and international standards." },
@@ -277,14 +318,14 @@ const IE: Region = {
     { icon: "shield", title: { en: "ISO 27001 & SOC 2" }, desc: { en: "ISMS certification readiness and SOC 2 attestation support." } },
   ],
   showGlobalStandards: true,
-  contact: { email: "ireland@c4sec.com", address: { en: "Dublin, Ireland" } },
+  contact: { email: "hello@c4sec.com", address: { en: "Dublin, Ireland" } },
   cta: {
     title: { en: "Ready to meet Irish & EU compliance obligations?" },
     sub: { en: "Talk to the C4Sec Ireland team about Central Bank guidance, DORA, NIS2, GDPR and international standards." },
   },
 };
 
-export const REGIONS: Region[] = [TR, AZ, AE, DE, IE];
+export const REGIONS: Region[] = [UK, TR, AZ, AE, DE, IE];
 
 // The global HQ (served at "/") offers all three fully-translated languages.
 export const GLOBAL_META = {

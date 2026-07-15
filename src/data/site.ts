@@ -2,7 +2,7 @@ export const SITE = {
   name: "C4Sec",
   legalName: "Consulting4Sec",
   domain: "https://c4sec.com",
-  email: "info@c4sec.com",
+  email: "hello@c4sec.com",
   phone: "+44 7464 294371",
   hqAddress: "London, United Kingdom",
   social: {
