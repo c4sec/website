@@ -255,9 +255,9 @@ p { margin: 0; }
 
 /* feature split */
 .split { display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
-.split__media { border-radius: var(--radius); overflow: hidden; position: relative; min-height: 420px;
+.split__media { border-radius: var(--radius); overflow: hidden; position: relative; min-height: 420px; display: flex;
   background: linear-gradient(160deg, var(--navy-800), var(--navy-600)); box-shadow: var(--shadow-lg); }
-.split__media .panel { position:absolute; inset:0; padding: 40px; color:#dce6f4; display:flex; flex-direction:column; justify-content:space-between; }
+.split__media .panel { position:relative; z-index:1; flex:1; padding: 40px; color:#dce6f4; display:flex; flex-direction:column; justify-content:space-between; gap: 26px; }
 .split__media .grid-lines { position:absolute; inset:0; opacity:.3;
   background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
   background-size: 40px 40px; }
@@ -267,6 +267,9 @@ p { margin: 0; }
 .feature-list .tick svg { width: 14px; height: 14px; }
 .feature-list b { display: block; color: var(--navy-800); font-size: 16px; }
 .feature-list span { color: var(--slate); font-size: 15px; }
+/* On the dark media panel, lighten the feature-list text for contrast. */
+.split__media .panel .feature-list b { color: #fff; }
+.split__media .panel .feature-list span { color: #aebbcf; }
 
 /* approach / steps */
 .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: step; }

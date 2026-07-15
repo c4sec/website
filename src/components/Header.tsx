@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useI18n } from "./I18nProvider";
 import { Icon } from "./Icon";
 import { LOCALE_META, type Localized } from "@/i18n/config";
@@ -22,14 +22,17 @@ export function Header({
   const [menuOpen, setMenuOpen] = useState(false);
   const [regionOpen, setRegionOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const regionRef = useRef<HTMLDivElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const close = () => {
-      setRegionOpen(false);
-      setLangOpen(false);
-    };
-    document.addEventListener("click", close);
-    return () => document.removeEventListener("click", close);
+    function onDoc(e: MouseEvent) {
+      const target = e.target as Node;
+      if (regionRef.current && !regionRef.current.contains(target)) setRegionOpen(false);
+      if (langRef.current && !langRef.current.contains(target)) setLangOpen(false);
+    }
+    document.addEventListener("click", onDoc);
+    return () => document.removeEventListener("click", onDoc);
   }, []);
 
   const base = regionSlug ? `/${regionSlug}` : "";
@@ -77,12 +80,11 @@ export function Header({
 
         <div className="nav__right">
           {/* Region switcher */}
-          <div className={`region${regionOpen ? " open" : ""}`}>
+          <div className={`region${regionOpen ? " open" : ""}`} ref={regionRef}>
             <button
               className="region__btn"
               aria-label="Change region"
-              onClick={(e) => {
-                e.stopPropagation();
+              onClick={() => {
                 setRegionOpen((v) => !v);
                 setLangOpen(false);
               }}
@@ -117,12 +119,11 @@ export function Header({
 
           {/* Language switcher */}
           {locales.length > 1 && (
-            <div className={`lang${langOpen ? " open" : ""}`}>
+            <div className={`lang${langOpen ? " open" : ""}`} ref={langRef}>
               <button
                 className="lang__btn"
                 aria-label="Change language"
-                onClick={(e) => {
-                  e.stopPropagation();
+                onClick={() => {
                   setLangOpen((v) => !v);
                   setRegionOpen(false);
                 }}
