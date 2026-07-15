@@ -7,6 +7,7 @@ import { useI18n } from "./I18nProvider";
 import { Icon } from "./Icon";
 import { LOCALE_META, type Localized } from "@/i18n/config";
 import { REGION_LINKS } from "@/data/regions";
+import { CATEGORIES, servicesByCategory } from "@/data/services";
 
 export function Header({
   regionSlug,
@@ -22,14 +23,17 @@ export function Header({
   const [menuOpen, setMenuOpen] = useState(false);
   const [regionOpen, setRegionOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const regionRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     function onDoc(e: MouseEvent) {
       const target = e.target as Node;
       if (regionRef.current && !regionRef.current.contains(target)) setRegionOpen(false);
       if (langRef.current && !langRef.current.contains(target)) setLangOpen(false);
+      if (servicesRef.current && !servicesRef.current.contains(target)) setServicesOpen(false);
     }
     document.addEventListener("click", onDoc);
     return () => document.removeEventListener("click", onDoc);
@@ -68,13 +72,53 @@ export function Header({
 
         <nav>
           <ul className="menu">
-            {nav.map(([key, href]) => (
-              <li key={href}>
-                <Link href={href} className={isActive(href) ? "active" : undefined} onClick={() => setMenuOpen(false)}>
-                  {t(key)}
-                </Link>
-              </li>
-            ))}
+            {nav.map(([key, href]) => {
+              // Global "Services" becomes a mega-menu of categories + services.
+              if (key === "nav.services" && !regionSlug) {
+                return (
+                  <li key={href} className={`has-mega${servicesOpen ? " open" : ""}`} ref={servicesRef}>
+                    <button
+                      className={`menu__trigger${isActive("/services") ? " active" : ""}`}
+                      onClick={() => setServicesOpen((v) => !v)}
+                    >
+                      {t(key)}
+                      <Icon name="chevron" size={13} className="menu__chev" />
+                    </button>
+                    <div className="mega">
+                      <div className="mega__grid">
+                        {CATEGORIES.map((cat) => (
+                          <div className="mega__col" key={cat.id}>
+                            <div className="mega__cat">
+                              <span className="mega__cat-ic"><Icon name={cat.icon} size={16} /></span>
+                              {cat.title}
+                            </div>
+                            <ul className="mega__list">
+                              {servicesByCategory(cat.id).map((s) => (
+                                <li key={s.slug}>
+                                  <Link href={`/services/${s.slug}`} onClick={() => { setServicesOpen(false); setMenuOpen(false); }}>
+                                    {s.title}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                      <Link href="/services" className="mega__all" onClick={() => { setServicesOpen(false); setMenuOpen(false); }}>
+                        {t("services.title")} →
+                      </Link>
+                    </div>
+                  </li>
+                );
+              }
+              return (
+                <li key={href}>
+                  <Link href={href} className={isActive(href) ? "active" : undefined} onClick={() => setMenuOpen(false)}>
+                    {t(key)}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 

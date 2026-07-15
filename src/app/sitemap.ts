@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { REGIONS } from "@/data/regions";
+import { SERVICES } from "@/data/services";
 import { SITE } from "@/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,6 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: p === "" ? 1 : 0.8,
   }));
+
+  for (const s of SERVICES) {
+    entries.push({ url: `${base}/services/${s.slug}`, changeFrequency: "monthly", priority: 0.6 });
+  }
 
   for (const r of REGIONS) {
     for (const p of ["", "/services", "/contact"]) {
