@@ -5,7 +5,7 @@ import { GLOBAL_META } from "@/data/regions";
 
 export const metadata: Metadata = {
   title: "About — The firm behind your compliance",
-  description: "An international GRC advisory built on the Big-Four model — managing partners, country representations and one shared standard of quality.",
+  description: "An international GRC advisory structured as a global partnership — managing partners, country representations and one shared standard of quality.",
 };
 
 export default function Page() {

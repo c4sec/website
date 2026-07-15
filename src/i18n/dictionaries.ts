@@ -29,7 +29,7 @@ export const DICT: Record<"en" | "tr" | "az", Dict> = {
 
     /* ---- about intro ---- */
     "intro.eyebrow": "Who we are",
-    "intro.title": "A Big-Four model, built for the security era",
+    "intro.title": "A global partnership, built for the security era",
     "intro.lead": "Founded in London and operating through managing partners and country representations, C4Sec brings the structure and rigour of a global professional-services firm to governance, risk and compliance.",
     "intro.body": "We combine deep regulatory knowledge with hands-on engineering experience. Our consultants are practising auditors — so the management systems we design are not theoretical templates, but living frameworks your teams can run, evidence and improve.",
     "intro.p1t": "One firm, many borders", "intro.p1d": "Consistent methodology and quality across every country we operate in.",
@@ -95,7 +95,7 @@ export const DICT: Record<"en" | "tr" | "az", Dict> = {
     /* ---- About page ---- */
     "about.crumb": "About",
     "about.title": "The firm behind your compliance",
-    "about.sub": "An international GRC advisory built on the Big-Four model — managing partners, country representations and one shared standard of quality.",
+    "about.sub": "An international GRC advisory structured as a global partnership — managing partners, country representations and one shared standard of quality.",
     "about.story_eyebrow": "Our story",
     "about.story_title": "Serving the world from London",
     "about.story_p1": "C4Sec — Consulting4Sec — was founded in London with a clear aim: to help organisations implement best practice in information security, compliance and cyber security, wherever they operate.",
@@ -280,7 +280,7 @@ export const DICT: Record<"en" | "tr" | "az", Dict> = {
     "trust.label": "Uyguladığımız çerçeveler",
 
     "intro.eyebrow": "Biz kimiz",
-    "intro.title": "Güvenlik çağı için kurgulanmış bir Big-Four modeli",
+    "intro.title": "Güvenlik çağı için kurgulanmış küresel bir ortaklık modeli",
     "intro.lead": "Londra'da kurulan ve yönetici ortaklar ile ülke temsilcilikleri üzerinden faaliyet gösteren C4Sec, küresel bir profesyonel hizmetler firmasının yapısını ve titizliğini yönetişim, risk ve uyum alanına taşır.",
     "intro.body": "Derin mevzuat bilgisini sahadaki mühendislik tecrübesiyle birleştiriyoruz. Danışmanlarımız aktif denetçilerdir — bu nedenle tasarladığımız yönetim sistemleri teorik şablonlar değil, ekiplerinizin işletebileceği, kanıtlayabileceği ve geliştirebileceği yaşayan çerçevelerdir.",
     "intro.p1t": "Tek firma, çok sınır", "intro.p1d": "Faaliyet gösterdiğimiz her ülkede tutarlı metodoloji ve kalite.",
@@ -339,7 +339,7 @@ export const DICT: Record<"en" | "tr" | "az", Dict> = {
 
     "about.crumb": "Hakkımızda",
     "about.title": "Uyumunuzun arkasındaki firma",
-    "about.sub": "Big-Four modeli üzerine kurulu uluslararası bir GRC danışmanlığı — yönetici ortaklar, ülke temsilcilikleri ve tek bir ortak kalite standardı.",
+    "about.sub": "Küresel bir ortaklık olarak yapılandırılmış uluslararası bir GRC danışmanlığı — yönetici ortaklar, ülke temsilcilikleri ve tek bir ortak kalite standardı.",
     "about.story_eyebrow": "Hikayemiz",
     "about.story_title": "Londra'dan dünyaya hizmet",
     "about.story_p1": "C4Sec — Consulting4Sec — net bir amaçla Londra'da kuruldu: kuruluşların nerede faaliyet gösterirse göstersin bilgi güvenliği, uyum ve siber güvenlikte en iyi uygulamaları hayata geçirmesine yardımcı olmak.",
@@ -520,7 +520,7 @@ export const DICT: Record<"en" | "tr" | "az", Dict> = {
     "trust.label": "Tətbiq etdiyimiz çərçivələr",
 
     "intro.eyebrow": "Biz kimik",
-    "intro.title": "Təhlükəsizlik dövrü üçün qurulmuş Big-Four modeli",
+    "intro.title": "Təhlükəsizlik dövrü üçün qurulmuş qlobal tərəfdaşlıq modeli",
     "intro.lead": "Londonda təsis edilən və idarəedici tərəfdaşlar ilə ölkə nümayəndəlikləri vasitəsilə fəaliyyət göstərən C4Sec, qlobal peşəkar xidmət firmasının strukturunu və ciddiyyətini idarəetmə, risk və uyğunluq sahəsinə gətirir.",
     "intro.body": "Dərin tənzimləmə biliyini praktiki mühəndislik təcrübəsi ilə birləşdiririk. Məsləhətçilərimiz fəaliyyətdə olan auditorlardır — buna görə dizayn etdiyimiz idarəetmə sistemləri nəzəri şablonlar deyil, komandalarınızın işlədə, sübut edə və təkmilləşdirə biləcəyi canlı çərçivələrdir.",
     "intro.p1t": "Bir firma, çox sərhəd", "intro.p1d": "Fəaliyyət göstərdiyimiz hər ölkədə ardıcıl metodologiya və keyfiyyət.",
@@ -579,7 +579,7 @@ export const DICT: Record<"en" | "tr" | "az", Dict> = {
 
     "about.crumb": "Haqqımızda",
     "about.title": "Uyğunluğunuzun arxasındakı firma",
-    "about.sub": "Big-Four modeli üzərində qurulmuş beynəlxalq GRC məsləhəti — idarəedici tərəfdaşlar, ölkə nümayəndəlikləri və vahid ortaq keyfiyyət standartı.",
+    "about.sub": "Qlobal tərəfdaşlıq kimi qurulmuş beynəlxalq GRC məsləhəti — idarəedici tərəfdaşlar, ölkə nümayəndəlikləri və vahid ortaq keyfiyyət standartı.",
     "about.story_eyebrow": "Hekayəmiz",
     "about.story_title": "Londondan dünyaya xidmət",
     "about.story_p1": "C4Sec — Consulting4Sec — aydın məqsədlə Londonda təsis edildi: təşkilatlara harada fəaliyyət göstərməsindən asılı olmayaraq informasiya təhlükəsizliyi, uyğunluq və kibertəhlükəsizlikdə ən yaxşı təcrübələri həyata keçirməyə kömək etmək.",
