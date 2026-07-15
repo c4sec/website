@@ -39,7 +39,6 @@ const TR: Region = {
   status: "live",
   locales: ["tr", "en", "az"],
   defaultLocale: "tr",
-  partner: { en: "DNS Danışmanlık", tr: "DNS Danışmanlık", az: "DNS Danışmanlık" },
   hero: {
     badge: { en: "Türkiye · Istanbul", tr: "Türkiye · İstanbul", az: "Türkiyə · İstanbul" },
     title: {
@@ -48,9 +47,9 @@ const TR: Region = {
       az: "GRC və tənzimləmə uyğunluğu, <em>Türkiyə bazarı üçün.</em>",
     },
     sub: {
-      en: "C4Sec Türkiye pairs our global methodology with deep local regulatory expertise — delivered in partnership with DNS Danışmanlık.",
-      tr: "C4Sec Türkiye, küresel metodolojimizi derin yerel mevzuat uzmanlığıyla birleştirir — DNS Danışmanlık iş birliğiyle sunulur.",
-      az: "C4Sec Türkiyə qlobal metodologiyamızı dərin yerli tənzimləmə təcrübəsi ilə birləşdirir — DNS Danışmanlık tərəfdaşlığı ilə.",
+      en: "C4Sec Türkiye pairs our global methodology with deep local regulatory expertise across EPDK, BDDK, KVKK, TCMB and SPK.",
+      tr: "C4Sec Türkiye, küresel metodolojimizi EPDK, BDDK, KVKK, TCMB ve SPK genelinde derin yerel mevzuat uzmanlığıyla birleştirir.",
+      az: "C4Sec Türkiyə qlobal metodologiyamızı EPDK, BDDK, KVKK, TCMB və SPK üzrə dərin yerli tənzimləmə təcrübəsi ilə birləşdirir.",
     },
   },
   intro: {
@@ -66,9 +65,9 @@ const TR: Region = {
       az: "Türkiyə praktikamız C4Sec-in beynəlxalq çərçivələrini EPDK, BDDK, KVKK, TCMB və SPK bilikləri ilə birləşdirir.",
     },
     body: {
-      en: "Delivered together with DNS Danışmanlık, serving Turkish organisations since 2008 with consulting, training and audit.",
-      tr: "2008'den bu yana Türk kuruluşlarına danışmanlık, eğitim ve denetim veren DNS Danışmanlık ile birlikte sunulur.",
-      az: "2008-ci ildən Türkiyə təşkilatlarına xidmət edən DNS Danışmanlık ilə birlikdə təqdim olunur.",
+      en: "Consulting, training and audit for regulated and high-growth organisations across Türkiye.",
+      tr: "Türkiye genelinde düzenlemeye tabi ve hızlı büyüyen kuruluşlara danışmanlık, eğitim ve denetim.",
+      az: "Türkiyə üzrə tənzimlənən və sürətlə böyüyən təşkilatlara məsləhət, təlim və audit.",
     },
   },
   localHeading: { en: "Türkiye-specific compliance", tr: "Türkiye'ye özel uyum", az: "Türkiyəyə xas uyğunluq" },
@@ -89,7 +88,7 @@ const TR: Region = {
   contact: {
     email: "turkiye@c4sec.com",
     phone: "+90 212 951 0 423",
-    address: { en: "In partnership with DNS Danışmanlık, Istanbul, Türkiye", tr: "DNS Danışmanlık iş birliğiyle, İstanbul, Türkiye", az: "DNS Danışmanlık tərəfdaşlığı ilə, İstanbul, Türkiyə" },
+    address: { en: "Istanbul, Türkiye", tr: "İstanbul, Türkiye", az: "İstanbul, Türkiyə" },
   },
   cta: {
     title: { en: "Ready to meet your regulatory obligations in Türkiye?", tr: "Türkiye'de mevzuat yükümlülüklerinizi karşılamaya hazır mısınız?", az: "Türkiyədə tənzimləmə öhdəliklərinizi qarşılamağa hazırsınız?" },

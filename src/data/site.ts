@@ -4,7 +4,7 @@ export const SITE = {
   domain: "https://c4sec.com",
   email: "info@c4sec.com",
   phone: "+44 7464 294371",
-  hqAddress: "50 Britannia Street, London, England, WC1X 9JH",
+  hqAddress: "London, United Kingdom",
   social: {
     linkedin: "https://www.linkedin.com/company/consulting-4-sec/",
     medium: "https://consulting4sec.medium.com",
