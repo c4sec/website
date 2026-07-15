@@ -6,11 +6,11 @@ import { Icon, type IconName } from "../Icon";
 import { Arrow, PageHero } from "../blocks";
 import { SECTOR_KEYS } from "@/data/site";
 
-export function GlobalSectors() {
+export function GlobalSectors({ basePath = "" }: { basePath?: string }) {
   const { t } = useI18n();
   return (
     <>
-      <PageHero crumbHome={t("nav.home")} crumb={t("sectors.crumb")} title={t("sectors.title")} sub={t("sectors.sub")} />
+      <PageHero crumbHome={t("nav.home")} crumb={t("sectors.crumb")} title={t("sectors.title")} sub={t("sectors.sub")} homeHref={basePath || "/"} />
 
       <section className="section">
         <div className="container">
@@ -28,8 +28,8 @@ export function GlobalSectors() {
             <h2>{t("sectors.cta_t")}</h2>
             <p>{t("sectors.cta_d")}</p>
             <div className="cta__btns">
-              <Link href="/contact" className="btn btn--primary"><span>{t("nav.cta")}</span><Arrow /></Link>
-              <Link href="/services" className="btn btn--ghost">{t("cta.btn2")}</Link>
+              <Link href={`${basePath}/contact`} className="btn btn--primary"><span>{t("nav.cta")}</span><Arrow /></Link>
+              <Link href={`${basePath}/services`} className="btn btn--ghost">{t("cta.btn2")}</Link>
             </div>
           </div>
         </div>

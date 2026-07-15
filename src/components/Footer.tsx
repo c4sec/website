@@ -11,18 +11,12 @@ export function Footer({ regionSlug }: { regionSlug: string }) {
   const base = regionSlug ? `/${regionSlug}` : "";
   const home = base || "/";
 
-  const company = regionSlug
-    ? [
-        ["nav.home", home],
-        ["nav.services", `${base}/services`],
-        ["nav.contact", `${base}/contact`],
-      ]
-    : [
-        ["nav.about", "/about"],
-        ["nav.services", "/services"],
-        ["nav.sectors", "/sectors"],
-        ["nav.contact", "/contact"],
-      ];
+  const company: [string, string][] = [
+    ["nav.about", `${base}/about`],
+    ["nav.services", `${base}/services`],
+    ["nav.sectors", `${base}/sectors`],
+    ["nav.contact", `${base}/contact`],
+  ];
 
   return (
     <footer className="footer">

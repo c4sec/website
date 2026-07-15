@@ -41,19 +41,14 @@ export function Header({
 
   const base = regionSlug ? `/${regionSlug}` : "";
   const home = base || "/";
-  const nav = regionSlug
-    ? [
-        ["nav.home", home],
-        ["nav.services", `${base}/services`],
-        ["nav.contact", `${base}/contact`],
-      ]
-    : [
-        ["nav.home", "/"],
-        ["nav.about", "/about"],
-        ["nav.services", "/services"],
-        ["nav.sectors", "/sectors"],
-        ["nav.contact", "/contact"],
-      ];
+  // Identical menu in every context (global + country), just base-prefixed.
+  const nav: [string, string][] = [
+    ["nav.home", home],
+    ["nav.about", `${base}/about`],
+    ["nav.services", `${base}/services`],
+    ["nav.sectors", `${base}/sectors`],
+    ["nav.contact", `${base}/contact`],
+  ];
 
   const isActive = (href: string) =>
     href === "/" || href === home ? pathname === href : pathname === href || pathname.startsWith(href + "/");

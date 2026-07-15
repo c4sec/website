@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   for (const r of REGIONS) {
-    for (const p of ["", "/services", "/contact"]) {
+    for (const p of ["", "/about", "/services", "/sectors", "/contact"]) {
       entries.push({ url: `${base}/${r.slug}${p}`, changeFrequency: "monthly", priority: 0.7 });
     }
     const regionSlugs = [...r.localServices.map((s) => slugify(s.title.en)), ...SERVICES.map((s) => s.slug)];

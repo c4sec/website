@@ -13,11 +13,11 @@ const MODEL: { key: string; icon: IconName }[] = [
   { key: "mv1", icon: "users" }, { key: "mv2", icon: "globe" }, { key: "mv3", icon: "clipboard" },
 ];
 
-export function GlobalAbout() {
+export function GlobalAbout({ basePath = "" }: { basePath?: string }) {
   const { t, L } = useI18n();
   return (
     <>
-      <PageHero crumbHome={t("nav.home")} crumb={t("about.crumb")} title={t("about.title")} sub={t("about.sub")} />
+      <PageHero crumbHome={t("nav.home")} crumb={t("about.crumb")} title={t("about.title")} sub={t("about.sub")} homeHref={basePath || "/"} />
 
       {/* STORY */}
       <section className="section">
@@ -107,7 +107,7 @@ export function GlobalAbout() {
 
       <section className="section">
         <div className="container">
-          <CtaBand title={t("cta.title")} sub={t("cta.sub")} primary={{ href: "/contact", label: t("cta.btn1") }} secondary={{ href: "/services", label: t("cta.btn2") }} />
+          <CtaBand title={t("cta.title")} sub={t("cta.sub")} primary={{ href: `${basePath}/contact`, label: t("cta.btn1") }} secondary={{ href: `${basePath}/services`, label: t("cta.btn2") }} />
         </div>
       </section>
     </>
