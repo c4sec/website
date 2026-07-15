@@ -26,7 +26,7 @@ export function Shell({
   children: React.ReactNode;
 }) {
   return (
-    <I18nProvider locales={locales} defaultLocale={defaultLocale}>
+    <I18nProvider locales={locales} defaultLocale={defaultLocale} scope={regionSlug || "global"}>
       <Header regionSlug={regionSlug} regionName={regionName} regionFlag={regionFlag} />
       <main>{children}</main>
       <Footer regionSlug={regionSlug} />

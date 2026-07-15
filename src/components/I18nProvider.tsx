@@ -24,21 +24,26 @@ export function useI18n(): Ctx {
 export function I18nProvider({
   locales,
   defaultLocale,
+  scope,
   children,
 }: {
   locales: Locale[];
   defaultLocale: Locale;
+  scope: string; // language preference is remembered per region (e.g. "global", "tr")
   children: React.ReactNode;
 }) {
   const [locale, setLocaleState] = useState<Locale>(defaultLocale);
+  const storageKey = `c4sec_lang_${scope}`;
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("c4sec_lang") as Locale | null;
+      // Only honour a language the user explicitly chose *within this region*.
+      const saved = localStorage.getItem(storageKey) as Locale | null;
       if (saved && locales.includes(saved)) setLocaleState(saved);
+      else setLocaleState(defaultLocale);
     } catch {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [storageKey]);
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -48,7 +53,7 @@ export function I18nProvider({
   const setLocale = (l: Locale) => {
     setLocaleState(l);
     try {
-      localStorage.setItem("c4sec_lang", l);
+      localStorage.setItem(storageKey, l);
     } catch {}
   };
 
