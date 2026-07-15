@@ -28,9 +28,9 @@ export async function generateMetadata({ params }: { params: Promise<{ region: s
   if (!r) return {};
   const local = r.localServices.find((s) => slugify(s.title.en) === slug);
   const g = getService(slug);
-  const title = local ? local.title.en : g?.title;
+  const title = local ? local.title.en : g?.title.en;
   if (!title) return {};
-  return { title: `${title} — C4Sec ${r.name.en}`, description: local ? local.desc.en : g?.tagline };
+  return { title: `${title} — C4Sec ${r.name.en}`, description: local ? local.desc.en : g?.tagline.en };
 }
 
 export default async function Page({ params }: { params: Promise<{ region: string; slug: string }> }) {

@@ -52,15 +52,15 @@ export function ServiceView({ regionSlug, slug }: { regionSlug: string; slug: st
       const cat = CATEGORIES.find((c) => c.id === g.category);
       r = {
         icon: g.icon,
-        title: g.title,
-        tagline: g.tagline,
-        overview: g.overview,
-        included: g.included,
-        categoryTitle: cat?.title,
+        title: L(g.title),
+        tagline: L(g.tagline),
+        overview: L(g.overview),
+        included: L(g.included),
+        categoryTitle: cat ? L(cat.title) : undefined,
         categoryIcon: cat?.icon,
         related: servicesByCategory(g.category)
           .filter((s) => s.slug !== g.slug)
-          .map((s) => ({ slug: s.slug, title: s.title })),
+          .map((s) => ({ slug: s.slug, title: L(s.title) })),
       };
     }
   }

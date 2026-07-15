@@ -8,7 +8,7 @@ import { FRAMEWORKS } from "@/data/site";
 import { CATEGORIES, servicesByCategory } from "@/data/services";
 
 export function GlobalServices() {
-  const { t } = useI18n();
+  const { t, L } = useI18n();
 
   return (
     <>
@@ -26,15 +26,15 @@ export function GlobalServices() {
           {CATEGORIES.map((cat, ci) => (
             <div key={cat.id} style={{ marginBottom: ci < CATEGORIES.length - 1 ? 64 : 0 }}>
               <div className="svc-row__head" style={{ maxWidth: 720, marginBottom: 28 }} data-reveal>
-                <span className="eyebrow"><Icon name={cat.icon} size={14} /> {cat.title}</span>
-                <p className="lead" style={{ marginTop: 6 }}>{cat.blurb}</p>
+                <span className="eyebrow"><Icon name={cat.icon} size={14} /> {L(cat.title)}</span>
+                <p className="lead" style={{ marginTop: 6 }}>{L(cat.blurb)}</p>
               </div>
               <div className="cards">
                 {servicesByCategory(cat.id).map((s) => (
                   <Link href={`/services/${s.slug}`} className="card" key={s.slug} data-reveal>
                     <div className="card__icon"><Icon name={s.icon} size={26} /></div>
-                    <h3>{s.title}</h3>
-                    <p>{s.tagline}</p>
+                    <h3>{L(s.title)}</h3>
+                    <p>{L(s.tagline)}</p>
                     <span className="card__link"><span>{t("pillars.link")}</span><Arrow /></span>
                   </Link>
                 ))}

@@ -65,7 +65,7 @@ export function Header({
     });
   }
   CATEGORIES.forEach((c) => {
-    megaCols.push({ title: c.title, icon: c.icon, items: servicesByCategory(c.id).map((s) => ({ slug: s.slug, title: s.title })) });
+    megaCols.push({ title: L(c.title), icon: c.icon, items: servicesByCategory(c.id).map((s) => ({ slug: s.slug, title: L(s.title) })) });
   });
 
   return (

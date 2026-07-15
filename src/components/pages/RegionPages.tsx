@@ -147,15 +147,15 @@ export function RegionServices({ region }: { region: Region }) {
           {CATEGORIES.map((cat) => (
             <div key={cat.id} style={{ marginBottom: 64 }}>
               <div className="svc-row__head" style={{ maxWidth: 720, marginBottom: 28 }} data-reveal>
-                <span className="eyebrow"><Icon name={cat.icon} size={14} /> {cat.title}</span>
-                <p className="lead" style={{ marginTop: 6 }}>{cat.blurb}</p>
+                <span className="eyebrow"><Icon name={cat.icon} size={14} /> {L(cat.title)}</span>
+                <p className="lead" style={{ marginTop: 6 }}>{L(cat.blurb)}</p>
               </div>
               <div className="cards">
                 {servicesByCategory(cat.id).map((s) => (
                   <Link href={`${base}/services/${s.slug}`} className="card" key={s.slug} data-reveal>
                     <div className="card__icon"><Icon name={s.icon} size={26} /></div>
-                    <h3>{s.title}</h3>
-                    <p>{s.tagline}</p>
+                    <h3>{L(s.title)}</h3>
+                    <p>{L(s.tagline)}</p>
                     <span className="card__link"><span>{t("pillars.link")}</span><Arrow /></span>
                   </Link>
                 ))}
